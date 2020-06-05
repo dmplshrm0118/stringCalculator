@@ -1,14 +1,12 @@
 
 package Assessment;
 
-import org.junit.Test;
 import static org.junit.Assert.*;
 
-public class AddStringNumbersTest {
+public class AddStringNumbersTest{
     
     // Function For Test Cases
     public void testAddString(String num, int expected) {
-       
         AddStringNumbers sn = new AddStringNumbers();
         int result = sn.Add(num);
         assertEquals(expected, result);
@@ -38,6 +36,7 @@ public class AddStringNumbersTest {
         sn.Add("*2,3");
     }
     
+    
     // Test For Not Number String Input
     @org.junit.Test(expected=NumberFormatException.class)
     public void checkInputIsNumberFormat(){
@@ -46,7 +45,7 @@ public class AddStringNumbersTest {
     }
     
     // Test For Negative Number
-    @org.junit.Test(expected=NegativeException.class)
+    @org.junit.Test(expected = IllegalArgumentException.class)
     public void checkNegatives(){
         AddStringNumbers sn = new AddStringNumbers();
         sn.Add("-3,2");
@@ -64,7 +63,7 @@ public class AddStringNumbersTest {
         testAddString("//;\n2;3;4", 9);
     }
     
-    // Test For Number Larger Than 1000
+    // Test For Number Larger Than & Equals to 1000
     @org.junit.Test
     public void checkNumberUpperlimit(){
         testAddString("1000,2", 2);
